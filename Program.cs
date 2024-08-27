@@ -15,40 +15,30 @@ namespace test
     }
     internal class Program
     {
+        /// <summary>
+        /// Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+        /// </summary>
+        /// 203. Remove Linked List Elements
+        /// <returns></returns>
         public static ListNode RemoveElements(ListNode head, int val)
         {
-            ListNode dummy=new ListNode(0);
-            if (head == null)
-                return null;
-            else
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode prev = dummy;
+            ListNode cur = head;
+            while (cur != null)
             {
-                //dummy = null;
-                dummy.next = head;
-                ListNode prev = dummy.next;
-                ListNode cur = dummy.next;
-               
-                while (cur != null||(prev.val==val&&prev!=null)&&dummy.next!=null)
+                if (cur.val == val)
                 {
-                    //cur = cur.next;
-                    if (dummy.next.val == val)
-                    {
-                        dummy.next = cur==null? null:cur.next;
-                        prev = dummy==null? null:prev.next;
-                        cur = prev==null? null:prev.next;
-                    }
-                    else if (cur.val == val)
-                    {
-                        prev.next = cur.next;
-                        cur = cur.next;
-                    }
-                    else
-                    {
-                        prev = prev.next;
-                        cur = prev.next;
-                    }
+                    prev.next = cur.next;
                 }
-                return dummy.next;
+                else
+                {
+                    prev = prev.next;
+                }
+                cur = cur.next;
             }
+            return dummy.next;
         }
         static void Main(string[] args)
         {
