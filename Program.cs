@@ -40,13 +40,40 @@ namespace test
             }
             return dummy.next;
         }
+
+        /// <summary>
+        /// Given the head of a linked list, remove the nth node from the end of the list and return its head.
+        /// </summary>
+        /// 19. Remove Nth Node From End of List
+        /// <param name="args"></param>
+        public static ListNode RemoveNthFromEnd(ListNode head, int n)
+        {
+            int listCount = 0;
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode cur = dummy.next;
+            ListNode prev = dummy;
+            while (head != null)
+            {
+                listCount++;
+                head = head.next;
+            }
+            for (int i = 1; i < listCount - n + 1; i++)
+            {
+                cur = cur.next;
+                prev = prev.next;
+            }
+            prev.next = cur.next;
+            return dummy.next;
+        }
+
         static void Main(string[] args)
         {
             ListNode head  = new ListNode(2);
             ListNode next0 = new ListNode(2);
             ListNode next1 = new ListNode(2);
             ListNode next2 = new ListNode(2);
-            ListNode next3 = new ListNode(2);
+           
             //ListNode next4 = new ListNode(2);
             //ListNode next5 = new ListNode(2);
 
@@ -54,7 +81,7 @@ namespace test
             next0.next = next1;
             next1.next = next2;
             //
-            next2.next = next3;
+           
             //next3.next = next4;
             //next4.next = next5;
             RemoveElements(head, 2);
