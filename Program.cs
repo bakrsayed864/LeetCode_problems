@@ -42,7 +42,7 @@ namespace test
         }
         static void Main(string[] args)
         {
-            ListNode head =new ListNode(2);
+            ListNode head  = new ListNode(2);
             ListNode next0 = new ListNode(2);
             ListNode next1 = new ListNode(2);
             ListNode next2 = new ListNode(2);
@@ -53,6 +53,7 @@ namespace test
             head.next = next0;
             next0.next = next1;
             next1.next = next2;
+            //
             next2.next = next3;
             //next3.next = next4;
             //next4.next = next5;
