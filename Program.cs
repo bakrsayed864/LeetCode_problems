@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using System.Text;
 
 namespace test
 {
@@ -532,6 +534,41 @@ namespace test
             }
 
             return keep.next;
+        }
+
+        /// <summary>
+        /// You are given the head of a non-empty linked list representing a non-negative integer without leading zeroes.
+        /// Return the head of the linked list after doubling it.
+        /// </summary>
+        /// 2816. Double a Number Represented as a Linked List
+        /// <returns></returns>
+        public static ListNode DoubleIt(ListNode head)
+        {
+            BigInteger num;
+            string final;
+            StringBuilder sb = new StringBuilder();
+            while (head != null)
+            {
+                sb.Append(head.val);
+                head = head.next;
+            }
+            Console.WriteLine(sb.ToString());
+            num = BigInteger.Parse(sb.ToString());
+            num *= 2;
+            final = num.ToString();
+            Console.WriteLine(final);
+
+            ListNode newHead = new ListNode(); // Create a new ListNode to hold the modified values
+            ListNode tail = newHead; // Initialize tail to point to the head of the new linked list
+            foreach (var i in final)
+            {
+                int value = (int)(char.GetNumericValue(i)); // Convert character to integer value
+                ListNode newNode = new ListNode(value); // Create a new ListNode with the value
+                tail.next = newNode; // Link the new node to the end of the list
+                tail = newNode; // Update tail to point to the new node
+            }
+
+            return newHead.next; // Return the entire modified linked list (head of the new linked list)
         }
         static void Main(string[] args)
         {
