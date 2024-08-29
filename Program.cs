@@ -52,6 +52,24 @@ namespace test
         }
 
         /// <summary>
+        /// You are given two integer arrays of equal length target and arr. In one step, you can select any non-empty subarray of arr and reverse it. 
+        /// You are allowed to make any number of steps.
+        /// Return true if you can make arr equal to target or false otherwise.
+        /// </summary>
+        /// 1460. Make Two Arrays Equal by Reversing Subarrays
+        /// <returns></returns>
+        public static bool CanBeEqual(int[] target, int[] arr)
+        {
+            Array.Sort(target);
+            Array.Sort(arr);
+            for (int i = 0; i < target.Length; i++)
+            {
+                if (target[i] != arr[i])
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
         /// At a lemonade stand, each lemonade costs $5. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills).
         /// Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill. 
         /// You must provide the correct change to each customer so that the net transaction is that the customer pays $5.
