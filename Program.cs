@@ -16,6 +16,64 @@ namespace test
     internal class Program
     {
         /// <summary>
+        /// You are given an m x n integer matrix points (0-indexed). Starting with 0 points, you want to maximize the number of points you can get from the matrix
+        /// To gain points, you must pick one cell in each row.Picking the cell at coordinates (r, c) will add points[r][c] to your score.
+        /// However, you will lose points if you pick a cell too far from the cell that you picked in the previous row.For every two adjacent rows r and r + 1 (where 0 <= r<m - 1), picking cells at coordinates(r, c1) and(r + 1, c2) will subtract abs(c1 - c2) from your score.
+        /// Return the maximum number of points you can achieve.
+        /// abs(x) is defined as:
+        /// </summary>
+        /// 1937. Maximum Number of Points with Cost
+        /// <returns></returns>
+        public static long MaxPoints(int[][] points)
+        {
+            int m = points.Length;
+            int n = points[0].Length;
+
+            // DP array to store the max points up to the current row
+            long[] dp = new long[n];
+
+            // Initialize the dp array with the first row
+            for (int c = 0; c < n; c++)
+            {
+                dp[c] = points[0][c];
+            }
+
+            // Iterate over each row starting from the second one
+            for (int r = 1; r < m; r++)
+            {
+                long[] newDp = new long[n];
+
+                // Forward pass to accumulate left maximums
+                long leftMax = dp[0];
+                for (int c = 0; c < n; c++)
+                {
+                    leftMax = Math.Max(leftMax, dp[c] + c);
+                    newDp[c] = leftMax + points[r][c] - c;
+                }
+
+                // Backward pass to accumulate right maximums
+                long rightMax = dp[n - 1] - (n - 1);
+                for (int c = n - 1; c >= 0; c--)
+                {
+                    rightMax = Math.Max(rightMax, dp[c] - c);
+                    newDp[c] = Math.Max(newDp[c], rightMax + points[r][c] + c);
+                }
+
+                // Update dp array with the newDp values for the current row
+                dp = newDp;
+            }
+
+            // The result will be the maximum value in the last dp array
+            long maxPoints = 0;
+            for (int c = 0; c < n; c++)
+            {
+                maxPoints = Math.Max(maxPoints, dp[c]);
+            }
+
+            return maxPoints;
+        }
+
+        /// <summary>
         /// Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
         /// </summary>
         /// 203. Remove Linked List Elements
