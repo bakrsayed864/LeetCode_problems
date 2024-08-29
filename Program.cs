@@ -145,21 +145,53 @@ namespace test
                 return null;
             }
         }
+
+        /// <summary>
+        /// Given a linked list, swap every two adjacent nodes and return its head.
+        /// You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
+        /// </summary>
+        /// 24. Swap Nodes in Pairs
+        /// <returns></returns>
+        public static ListNode SwapPairs(ListNode head)
+        {
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode first = dummy;
+            ListNode cur, prev;
+            if (head != null)
+            {
+                prev = first.next;
+                cur = prev == null ? null : prev.next;
+                while (cur != null)
+                {
+                    //swaping
+                    first.next = prev.next;
+                    prev.next = cur.next;
+                    cur.next = prev;
+                    //move to next
+                    first = prev;
+                    prev = first == null ? null : first.next;
+                    cur = prev == null ? null : prev.next;
+                }
+                return dummy.next;
+            }
+            return head;
+        }
         static void Main(string[] args)
         {
             ListNode list1  = new ListNode(1);
             ListNode next1 = new ListNode(2);
-            ListNode next2 = new ListNode(4);
+            ListNode next2 = new ListNode(3);
             ListNode list2 = new ListNode(1);
 
-            ListNode next4 = new ListNode(3);
+            ListNode next4 = new ListNode(4);
             ListNode next5 = new ListNode(4);
 
             list1.next = next1;
             next1.next = next2;
-            list2.next = next4;
+            next2.next = next4;
             next4.next = next5;
-            MergeTwoLists(list1,list2);
+            SwapPairs(list1);
         }
     }
 }
