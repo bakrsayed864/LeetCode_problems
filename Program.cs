@@ -16,6 +16,49 @@ namespace test
     internal class Program
     {
         /// <summary>
+        /// At a lemonade stand, each lemonade costs $5. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills).
+        /// Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill. 
+        /// You must provide the correct change to each customer so that the net transaction is that the customer pays $5.
+        /// Note that you do not have any change in hand at first.
+        /// Given an integer array bills where bills[i] is the bill the ith customer pays, return true if you can provide every customer with the correct change, or false otherwise.
+        /// </summary>
+        /// 860. Lemonade Change
+        /// <returns></returns>
+        public static bool LemonadeChange(int[] bills)
+        {
+            int count_5 = 0;
+            int count_10 = 0;
+            for (int i = 0; i < bills.Length; i++)
+            {
+                if (bills[i] == 5)
+                    count_5++;
+                else if (bills[i] == 10)
+                {
+                    if (count_5 > 0)
+                    {
+                        count_5--;
+                        count_10++;
+                    }
+                    else return false;
+                }
+                else
+                {
+                    if (count_5 >= 1 && count_10 >= 1)
+                    {
+                        count_5--;
+                        count_10--;
+                    }
+                    else if (count_5 >= 3)
+                    {
+                        count_5 -= 3;
+                    }
+                    else return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
         /// You are given an m x n integer matrix points (0-indexed). Starting with 0 points, you want to maximize the number of points you can get from the matrix
         /// To gain points, you must pick one cell in each row.Picking the cell at coordinates (r, c) will add points[r][c] to your score.
         /// However, you will lose points if you pick a cell too far from the cell that you picked in the previous row.For every two adjacent rows r and r + 1 (where 0 <= r<m - 1), picking cells at coordinates(r, c1) and(r + 1, c2) will subtract abs(c1 - c2) from your score.
@@ -243,7 +286,7 @@ namespace test
         /// </summary>
         /// 2. Add Two Numbers
         /// <returns></returns>
-        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
             ListNode tail = new ListNode(0);
             ListNode keep = tail;
