@@ -235,6 +235,42 @@ namespace test
             }
             return head;
         }
+
+        /// <summary>
+        /// You are given two non-empty linked lists representing two non-negative integers. 
+        /// The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+        /// You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+        /// </summary>
+        /// 2. Add Two Numbers
+        /// <returns></returns>
+        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        {
+            ListNode tail = new ListNode(0);
+            ListNode keep = tail;
+            int carry = 0;
+
+            while (l1 != null || l2 != null || carry != 0)
+            {
+                int n1 = l1 != null ? l1.val : 0;
+                int n2 = l2 != null ? l2.val : 0;
+                int sum = n1 + n2 + carry;
+                if (sum > 9)
+                {
+                    sum = sum - 10;
+                    carry = 1;
+                }
+                else
+                {
+                    carry = 0;
+                }
+                tail.next = new ListNode(sum);
+                tail = tail.next;
+                l1 = l1 != null ? l1.next : null;
+                l2 = l2 != null ? l2.next : null;
+            }
+
+            return keep.next;
+        }
         static void Main(string[] args)
         {
             ListNode list1  = new ListNode(1);
