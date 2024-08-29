@@ -116,6 +116,35 @@ namespace test
             }
             return dummy.next;
         }
+
+        /// <summary>
+        /// You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+        /// Merge all the linked-lists into one sorted linked-list and return it.
+        /// </summary>
+        /// 23. Merge k Sorted Lists
+        /// <param></param>
+        public static ListNode MergeKLists(ListNode[] lists)
+        {
+            if (lists.Length > 1)
+            {
+                ListNode l1 = lists[0] == null ? null : lists[0];
+                ListNode l2 = lists[1] == null ? null : lists[1];
+                ListNode result = MergeTwoLists(l1, l2);
+                for (int i = 2; i < lists.Length; i++)
+                {
+                    result = MergeTwoLists(lists[i], result);
+                }
+                return result;
+            }
+            else if (lists.Length == 1)
+            {
+                return lists[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
         static void Main(string[] args)
         {
             ListNode list1  = new ListNode(1);
