@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace test
 {
@@ -27,6 +28,34 @@ namespace test
   }
     internal class Program
     {
+        /// <summary>
+        /// You are given an n x n integer matrix grid. Generate an integer matrix maxLocal of size(n - 2) x(n - 2) such that:
+        /// maxLocal[i][j] is equal to the largest value of the 3 x 3 matrix in grid centered around row i + 1 and column j + 1.
+        /// In other words, we want to find the largest value in every contiguous 3 x 3 matrix in grid.
+        /// Return the generated matrix.
+        /// </summary>
+        /// 2373. Largest Local Values in a Matrix
+        /// <returns></returns>
+        public static int[][] LargestLocal(int[][] grid)
+        {
+            int[][] generated = new int[grid.Length - 2][];
+            for (int i = 0; i < generated.Length; i++)
+            {
+                generated[i] = new int[grid[i].Length - 2];
+                for (int j = 0; j < generated[i].Length; j++)
+                {
+                    int x = i + 1;
+                    int y = j + 1;
+                    generated[i][j] = Enumerable.Max(new[] {
+                    grid[x][y],grid[x - 1][y - 1], grid[x - 1][y], grid[x - 1][y + 1],
+                    grid[x][y - 1], grid[x][y + 1],
+                    grid[x + 1][y - 1], grid[x + 1][y], grid[x + 1][y + 1]
+                    });
+                }
+            }
+            return generated;
+        }
+
         /// <summary>
         /// You are given the array nums consisting of n positive integers. You computed the sum of all non-empty continuous subarrays from the array
         /// and then sorted them in non-decreasing order, creating a new array of n * (n + 1) / 2 numbers.
