@@ -57,6 +57,51 @@ namespace test
         }
 
         /// <summary>
+        /// You are given an integer array score of size n, where score[i] is the score of the ith athlete in a competition. All the scores are guaranteed to be unique.
+        /// The athletes are placed based on their scores, where the 1st place athlete has the highest score, the 2nd place athlete has the 2nd highest score, and so on.The placement of each athlete determines their rank:
+        /// The 1st place athlete's rank is "Gold Medal".
+        /// The 2nd place athlete's rank is "Silver Medal".
+        /// The 3rd place athlete's rank is "Bronze Medal".
+        /// For the 4th place to the nth place athlete, their rank is their placement number(i.e., the xth place athlete's rank is "x").
+        /// Return an array answer of size n where answer[i] is the rank of the ith athlete.
+        /// </summary>
+        /// 506. Relative Ranks
+        /// <returns></returns>
+        public static string[] FindRelativeRanks(int[] score)
+        {
+            string[] output = new string[score.Length];
+            int[] sorted = new int[score.Length];
+            Array.Copy(score, sorted, score.Length);
+            Array.Sort(sorted);
+            int flag = 1;
+            for (int i = sorted.Length - 1; i >= 0; i--)
+            {
+                int index = Array.IndexOf(score, sorted[i]);
+                if (flag == 1)
+                {
+                    output[index] = "Gold Medal";
+                    flag++;
+                }
+                else if (flag == 2)
+                {
+                    output[index] = "Silver Medal";
+                    flag++;
+                }
+                else if (flag == 3)
+                {
+                    output[index] = "Bronze Medal";
+                    flag++;
+                }
+                else
+                {
+                    output[index] = flag.ToString();
+                    flag++;
+                }
+            }
+            return output;
+        }
+
+        /// <summary>
         /// You are given the array nums consisting of n positive integers. You computed the sum of all non-empty continuous subarrays from the array
         /// and then sorted them in non-decreasing order, creating a new array of n * (n + 1) / 2 numbers.
         /// Return the sum of the numbers from index left to index right(indexed from 1), inclusive, in the new array.Since the answer can be a huge number return it modulo 109 + 7.
