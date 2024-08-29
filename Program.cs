@@ -16,6 +16,42 @@ namespace test
     internal class Program
     {
         /// <summary>
+        /// You are given the array nums consisting of n positive integers. You computed the sum of all non-empty continuous subarrays from the array
+        /// and then sorted them in non-decreasing order, creating a new array of n * (n + 1) / 2 numbers.
+        /// Return the sum of the numbers from index left to index right(indexed from 1), inclusive, in the new array.Since the answer can be a huge number return it modulo 109 + 7.
+        /// </summary>
+        /// 1508. Range Sum of Sorted Subarray Sums
+        /// <returns></returns>
+        public static int RangeSum(int[] nums, int n, int left, int right)
+        {
+            const int MOD = 1000000007;
+            List<int> list = new List<int>();
+
+            // Compute all subarray sums
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int sum = 0;
+                for (int j = i; j < nums.Length; j++)
+                {
+                    sum = (sum + nums[j]) % MOD;
+                    list.Add(sum);
+                }
+            }
+
+            // Convert list to array and sort
+            int[] numbersArray = list.ToArray();
+            Array.Sort(numbersArray);
+
+            // Calculate the sum from left to right (1-based index)
+            int result = 0;
+            for (int i = left - 1; i < right; i++)
+            {
+                result = (result + numbersArray[i]) % MOD;
+            }
+            return result;
+        }
+
+        /// <summary>
         /// At a lemonade stand, each lemonade costs $5. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills).
         /// Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill. 
         /// You must provide the correct change to each customer so that the net transaction is that the customer pays $5.
