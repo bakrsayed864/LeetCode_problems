@@ -594,6 +594,44 @@ namespace test
 
             return newHead.next; // Return the entire modified linked list (head of the new linked list)
         }
+        /// <summary>
+        /// Given the head of a linked list, rotate the list to the right by k places.
+        /// </summary>
+        /// 61. Rotate List
+        /// <returns></returns>
+        public static ListNode RotateRight(ListNode head, int k)
+        {
+            if (head == null || head.next == null || k == 0)
+                return head;
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            //getlength of the linked list
+            int lengthL = 0;
+            while (dummy.next != null)
+            {
+                lengthL++;
+                dummy = dummy.next;
+            }
+            Console.WriteLine(lengthL);
+            dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode cur = dummy.next;
+            ListNode prev = dummy;
+            //rotata untill k%lenght because any rotation after because rotating a list n=length times results in the original list
+            for (int i = 0; i < k % lengthL; i++)
+            {
+                while (cur.next != null)
+                {
+                    cur = cur.next;
+                    prev = prev.next;
+                }
+                prev.next = null;
+                cur.next = dummy.next;
+                dummy.next = cur;
+                prev = dummy;
+            }
+            return dummy.next;
+        }
         static void Main(string[] args)
         {
             ListNode list1  = new ListNode(1);
