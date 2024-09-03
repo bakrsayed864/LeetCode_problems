@@ -186,5 +186,13 @@
         /// 151. Reverse Words in a String
         /// <returns>Return a string of the words in reverse order concatenated by a single space.</returns>
         public string ReverseWords(string s);
+
+        /// <summary>
+        /// Given an integer array nums, handle multiple queries of the following type:
+        /// Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.
+        /// </summary>
+        /// 303. Range Sum Query - Immutable
+        /// <returns>Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).</returns>
+        public int SumRange(int[] arr, int left, int right);
     }
 }

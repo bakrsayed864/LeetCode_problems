@@ -571,5 +571,29 @@ namespace LeetCode
             }
             return result.Trim();
         }
+
+        public int SumRange(int[] arr, int left, int right)
+        {
+            //get commulative sum array
+            arr=transfereToComulativeSumm(arr);
+            if (left == 0)
+            {
+                return arr[right];
+            }
+            else
+            {
+                return arr[right] - arr[left - 1];
+            }
+        }
+        private int[] transfereToComulativeSumm(int[] array)
+        {
+            int comulativeSum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                comulativeSum += array[i];
+                array[i] = comulativeSum;
+            }
+            return array;
+        }
     }
 }
