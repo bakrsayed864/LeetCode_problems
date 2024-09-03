@@ -162,10 +162,29 @@
         /// You are given a 0-indexed integer array chalk and an integer k. There are initially k pieces of chalk. When the student number i is given a problem to solve, 
         /// they will use chalk[i] pieces of chalk to solve that problem. However, if the current number of chalk pieces is strictly less than chalk[i], 
         /// then the student number i will be asked to replace the chalk.
-        /// Return the index of the student that will replace the chalk pieces.
         /// </summary>
         /// 1894. Find the Student that Will Replace the Chalk
-        /// <returns></returns>
+        /// <returns>Return the index of the student that will replace the chalk pieces.</returns>
         int ChalkReplacer(int[] chalk, int k);
+
+        /// <summary>
+        /// You are given a string s consisting of lowercase English letters, and an integer k.
+        /// First, convert s into an integer by replacing each letter with its position in the alphabet(i.e., replace 'a' with 1, 'b' with 2, ..., 'z' with 26). Then, transform the integer by replacing it with the sum of its digits.Repeat the transform operation k times in total.
+        /// For example, if s = "zbax" and k = 2, then the resulting integer would be 8 by the following operations:
+        /// Convert: "zbax" ➝ "(26)(2)(1)(24)" ➝ "262124" ➝ 262124
+        /// Transform #1: 262124 ➝ 2 + 6 + 2 + 1 + 2 + 4 ➝ 17
+        /// Transform #2: 17 ➝ 1 + 7 ➝ 8
+        /// </summary>
+        /// 1945. Sum of Digits of String After Convert
+        /// <returns>Return the resulting integer after performing the operations described above.</returns>
+        public int GetLucky(string s, int k);
+
+        /// <summary>
+        /// Given an input string s, reverse the order of the words.
+        /// A word is defined as a sequence of non-space characters.The words in s will be separated by at least one space.
+        /// </summary>
+        /// 151. Reverse Words in a String
+        /// <returns>Return a string of the words in reverse order concatenated by a single space.</returns>
+        public string ReverseWords(string s);
     }
 }

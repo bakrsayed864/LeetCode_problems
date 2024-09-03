@@ -510,5 +510,66 @@ namespace LeetCode
             }
             return 0;
         }
+
+        public int GetLucky(string s, int k)
+        {
+
+            Dictionary<char, string> alphabetDict = new Dictionary<char, string>();
+            for (int i = 0; i < 26; i++)
+            {
+                char letter = (char)('a' + i);  // Calculate the letter
+                string position = (i + 1).ToString();  // Calculate the position (1-based)
+                alphabetDict[letter] = position;
+            }
+            string sn = "";
+            for (int i = 0; i < s.Length; i++)
+            {
+                sn += alphabetDict[s[i]];
+            }
+            //make transformation k times 
+            for (int i = 0; i < k; i++)
+            {
+                sn = transform(sn);
+            }
+            // parse result and return
+            return int.Parse(sn);
+        }
+        private string transform(string word)
+        {
+            string newstring = "";
+            int sum = 0;
+            for (int i = 0; i < word.Length; i++)
+            {
+                sum += word[i] - '0';
+            }
+            return sum.ToString();
+        }
+
+        public string ReverseWords(string s)
+        {
+            string result = "";
+            List<string> reverse = new List<string>();
+            string word = "";
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] != ' ')
+                {
+                    word += s[i];
+                }
+                if ((s[i] == ' ' || i == (s.Length) - 1) && word != "")
+                {
+                    reverse.Add(word);
+                    word = "";
+                }
+            }
+            Console.WriteLine(reverse.Last());
+            for (int i = (reverse.Count) - 1; i >= 0; i--)
+            {
+                result += reverse[i];
+                if (i != 0)
+                    result += " ";
+            }
+            return result.Trim();
+        }
     }
 }
