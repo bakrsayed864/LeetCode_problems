@@ -491,5 +491,24 @@ namespace LeetCode
             }
             return dummy.next;
         }
+
+        public int ChalkReplacer(int[] chalk, int k)
+        {
+            //get sum of array numbers
+            long arrsum = chalk.Sum(c => (long)c);
+            k = (int)(k % arrsum);
+            for (int i = 0; i < chalk.Length; i++)
+            {
+                if (k >= chalk[i])
+                {
+                    k -= chalk[i];
+                }
+                else
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
     }
 }

@@ -157,5 +157,15 @@
         /// 1. Two Sum
         /// <returns></returns>
         int[] TwoSum(int[] nums, int target);
+
+        /// <summary>
+        /// You are given a 0-indexed integer array chalk and an integer k. There are initially k pieces of chalk. When the student number i is given a problem to solve, 
+        /// they will use chalk[i] pieces of chalk to solve that problem. However, if the current number of chalk pieces is strictly less than chalk[i], 
+        /// then the student number i will be asked to replace the chalk.
+        /// Return the index of the student that will replace the chalk pieces.
+        /// </summary>
+        /// 1894. Find the Student that Will Replace the Chalk
+        /// <returns></returns>
+        int ChalkReplacer(int[] chalk, int k);
     }
 }
