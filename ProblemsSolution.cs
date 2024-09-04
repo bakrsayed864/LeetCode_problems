@@ -595,5 +595,28 @@ namespace LeetCode
             }
             return array;
         }
+
+        public int FindMaxLength(int[] nums)
+        {
+            Dictionary<int, int> keep = new();
+            //keep[0]=-1;
+            int count0 = 0, count1 = 0, maxsize = 0;
+            int diff = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 0) count0++;
+                else count1++;
+                diff = count1 - count0;
+                if (diff == 0) //this mean from the begining of the array till current index is equivilant 
+                    maxsize = i + 1;
+                else if (keep.ContainsKey(diff))
+                {
+                    maxsize = Math.Max(maxsize, i - keep[diff]);
+                }
+                else
+                    keep.Add(diff, i);
+            }
+            return maxsize;
+        }
     }
 }

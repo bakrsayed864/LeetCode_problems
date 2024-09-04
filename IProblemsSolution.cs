@@ -194,5 +194,12 @@
         /// 303. Range Sum Query - Immutable
         /// <returns>Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).</returns>
         public int SumRange(int[] arr, int left, int right);
+
+        /// <summary>
+        /// Given a binary array nums, return the maximum length of a contiguous subarray with an equal number of 0 and 1.
+        /// </summary>
+        /// 525. Contiguous Array
+        /// <returns>return the maximum length of a contiguous subarray with an equal number of 0 and 1</returns>
+        public int FindMaxLength(int[] nums);
     }
 }
