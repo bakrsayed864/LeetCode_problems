@@ -201,5 +201,12 @@
         /// 525. Contiguous Array
         /// <returns>return the maximum length of a contiguous subarray with an equal number of 0 and 1</returns>
         public int FindMaxLength(int[] nums);
+
+        /// <summary>
+        /// Given an array of integers nums and an integer k,A subarray is a contiguous non-empty sequence of elements within an array.
+        /// </summary>
+        /// 525. Contiguous Array
+        /// <returns> return the total number of subarrays whose sum equals to k<return>
+        public int SubarraySum(int[] nums, int k);
     }
 }

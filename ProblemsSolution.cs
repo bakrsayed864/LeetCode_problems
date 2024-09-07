@@ -617,5 +617,22 @@ namespace LeetCode
             }
             return max;
         }
+
+        public int SubarraySum(int[] nums, int k)
+        {
+            int totalNum = 0, commulativeSum = 0;
+            Dictionary<int, int> keepSums = new();
+            keepSums[0] = 1;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                commulativeSum += nums[i];
+                if (keepSums.ContainsKey(commulativeSum - k))
+                {
+                    totalNum += keepSums[commulativeSum - k];
+                }
+                keepSums[commulativeSum] = keepSums.ContainsKey(commulativeSum) ? keepSums[commulativeSum] + 1 : 1;
+            }
+            return totalNum;
+        }
     }
 }
