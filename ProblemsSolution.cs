@@ -634,5 +634,36 @@ namespace LeetCode
             }
             return totalNum;
         }
+
+        public int[] ProductExceptSelf(int[] nums)
+        {
+            int[] prefix = new int[nums.Length];
+            int[] suffix = new int[nums.Length];
+            int[] result = new int[nums.Length];
+            int prodpre = 1, prodsuf = 1;
+            for (int i = 0, j = nums.Length - 1; i < nums.Length && j >= 0; i++, j--)
+            {
+                prodpre = prodpre * nums[i];
+                prodsuf = prodsuf * nums[j];
+                prefix[i] = prodpre;
+                suffix[j] = prodsuf;
+            }
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (i == 0)
+                {
+                    result[i] = suffix[1];
+                }
+                else if (i == nums.Length - 1)
+                {
+                    result[i] = prefix[i - 1];
+                }
+                else
+                {
+                    result[i] = prefix[i - 1] * suffix[i + 1];
+                }
+            }
+            return result;
+        }
     }
 }

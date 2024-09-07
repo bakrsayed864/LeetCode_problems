@@ -208,5 +208,12 @@
         /// 525. Contiguous Array
         /// <returns> return the total number of subarrays whose sum equals to k<return>
         public int SubarraySum(int[] nums, int k);
+
+        /// <summary>
+        /// Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+        /// </summary>
+        /// 238. Product of Array Except Self
+        /// <returns>return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].<return>
+        public int[] ProductExceptSelf(int[] nums);
     }
 }
