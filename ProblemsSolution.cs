@@ -598,25 +598,24 @@ namespace LeetCode
 
         public int FindMaxLength(int[] nums)
         {
-            Dictionary<int, int> keep = new();
-            //keep[0]=-1;
-            int count0 = 0, count1 = 0, maxsize = 0;
-            int diff = 0;
+            Dictionary<int, int> keepSums = new();
+            keepSums[-1] = -1;
+            int difference = -1;
+            int count0 = 0, count1 = 0;
+            int max = 0;
             for (int i = 0; i < nums.Length; i++)
             {
-                if (nums[i] == 0) count0++;
-                else count1++;
-                diff = count1 - count0;
-                if (diff == 0) //this mean from the begining of the array till current index is equivilant 
-                    maxsize = i + 1;
-                else if (keep.ContainsKey(diff))
+                difference = nums[i] == 0 ? difference - 1 : difference + 1;
+                if (keepSums.ContainsKey(difference))
                 {
-                    maxsize = Math.Max(maxsize, i - keep[diff]);
+                    max = Math.Max(max, i - keepSums[difference]);
                 }
                 else
-                    keep.Add(diff, i);
+                {
+                    keepSums[difference] = i;
+                }
             }
-            return maxsize;
+            return max;
         }
     }
 }
