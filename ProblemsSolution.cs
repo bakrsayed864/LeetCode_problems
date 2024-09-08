@@ -665,5 +665,55 @@ namespace LeetCode
             }
             return result;
         }
+
+        public ListNode[] SplitListToParts(ListNode head, int k)
+        {
+            int listSize = 0;
+            ListNode dummy = head;
+            while (dummy != null)
+            {
+                listSize++;
+                dummy = dummy.next;
+            }
+            int derivedListSize = listSize / k;
+            int reminder = listSize % k;
+            int keepPartSize = 0, keepFirstElements = 0, arrayIndex = 0;
+            ListNode[] result = new ListNode[k];
+            ListNode keepHead = head;
+            while (keepHead != null)
+            {
+                //first part
+                if (arrayIndex == 0)
+                {
+                    result[arrayIndex] = keepHead;
+                    arrayIndex++;
+                    //keepHead = keepHead.next;
+                    keepPartSize++;
+                    keepFirstElements++;
+                }
+                //add
+                else if (keepPartSize < derivedListSize || (keepPartSize == derivedListSize && keepFirstElements <= reminder))
+                {
+                    keepHead = keepHead.next;
+                    keepPartSize++;
+                }
+                //nextPart
+                else
+                {
+                    ListNode nextPart = keepHead.next;
+                    keepHead.next = null;
+                    keepHead = nextPart;
+                    if (arrayIndex < k)
+                    {
+                        result[arrayIndex] = keepHead;
+                        arrayIndex++;
+                        keepPartSize = 1;
+                        keepFirstElements++;
+                    }
+
+                }
+            }
+            return result;
+        }
     }
 }
