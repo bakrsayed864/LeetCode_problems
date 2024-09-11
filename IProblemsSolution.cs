@@ -224,5 +224,31 @@
         /// 725. Split Linked List in Parts
         /// <returns>Return an array of the k parts.<return>
         public ListNode[] SplitListToParts(ListNode head, int k);
+
+        /// <summary>
+        /// You are given two integers m and n, which represent the dimensions of a matrix.
+        /// You are also given the head of a linked list of integers.
+        /// Generate an m x n matrix that contains the integers in the linked list presented in spiral order (clockwise), starting from the top-left of the matrix. 
+        /// If there are remaining empty spaces, fill them with -1.
+        /// </summary>
+        /// 2326. Spiral Matrix IV
+        /// <returns>Return the generated matrix.<return>
+        public int[][] SpiralMatrix(int m, int n, ListNode head);
+
+        /// <summary>
+        /// Given the head of a linked list head, in which each node contains an integer value.
+        /// Between every pair of adjacent nodes, insert a new node with a value equal to the greatest common divisor of them.
+        /// </summary>
+        /// 2807. Insert Greatest Common Divisors in Linked List
+        /// <returns>Return the linked list after insertion.<return>
+        public ListNode InsertGreatestCommonDivisors(ListNode head);
+
+        /// <summary>
+        /// A bit flip of a number x is choosing a bit in the binary representation of x and flipping it from either 0 to 1 or 1 to 0.
+        /// Given two integers start and goal, return the minimum number of bit flips to convert start to goal.
+        /// </summary>
+        /// 2220. Minimum Bit Flips to Convert Number
+        /// <returns>return the minimum number of bit flips to convert start to goal.<return>
+        public int MinBitFlips(int start, int goal);
     }
 }

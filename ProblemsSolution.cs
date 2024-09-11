@@ -715,5 +715,111 @@ namespace LeetCode
             }
             return result;
         }
+
+        public int[][] SpiralMatrix(int m, int n, ListNode head)
+        {
+            int directionIndex = 0;
+            int[][] result = new int[m][];
+            for (int i = 0; i < m; i++)
+            {
+                result[i] = new int[n];
+                for (int j = 0; j < n; j++)
+                {
+                    result[i][j] = -1;
+                }
+            }
+            int row = 0, col = 0;
+            while (head != null)
+            {
+                result[row][col] = head.val;
+                if ((row == m - 1 && directionIndex == 1) || (col == n - 1 && directionIndex == 0) || (col == 0 && directionIndex == 2))
+                {
+                    directionIndex = (directionIndex + 1) % 4;
+                }
+                else
+                {
+                    if (row < m - 1 && row != 0)
+                    {
+                        if ((result[row + 1][col] != -1 && directionIndex == 1) || (result[row - 1][col] != -1 && directionIndex == 3))
+                        {
+                            directionIndex = (directionIndex + 1) % 4;
+                        }
+                    }
+                    if (col < n - 1 && col != 0)
+                    {
+                        if ((result[row][col + 1] != -1 && directionIndex == 0) || (result[row][col - 1] != -1 && directionIndex == 2))
+                        {
+                            directionIndex = (directionIndex + 1) % 4;
+                        }
+                    }
+                }
+                if (directionIndex == 0)
+                    col++;
+                else if (directionIndex == 1)
+                    row++;
+                else if (directionIndex == 2)
+                    col--;
+                else
+                    row--;
+                head = head.next;
+            }
+            return result;
+        }
+
+        public ListNode InsertGreatestCommonDivisors(ListNode head)
+        {
+            if (head == null || head.next == null)
+                return head;
+            ListNode previous = head, current = head.next;
+            while (current != null)
+            {
+                ListNode GCDNode = getGreatestCommonDivisor(previous.val, current.val);
+                previous.next = GCDNode;
+                GCDNode.next = current;
+                //
+                previous = current;
+                current = current.next;
+            }
+            return head;
+        }
+        private ListNode getGreatestCommonDivisor(int first, int second)
+        {
+            int GCD = 1;
+            int smallest = first < second ? first : second;
+            for (int i = 1; i <= smallest; i++)
+            {
+                if (first.val % i == 0 && second.val % i == 0)
+                {
+                    GCD = i;
+                }
+            }
+            ListNode result = new ListNode(GCD);
+            return result;
+        }
+
+        public int MinBitFlips(int start, int goal)
+        {
+            string sbinary = Convert.ToString(start, 2);
+            string gbinary = Convert.ToString(goal, 2);
+            int steps = 0;
+            while (sbinary.Length != gbinary.Length)
+            {
+                if (sbinary.Length < gbinary.Length)
+                {
+                    sbinary = sbinary.Insert(0, "0");
+                }
+                else if (sbinary.Length > gbinary.Length)
+                {
+                    gbinary = gbinary.Insert(0, "0");
+                }
+            }
+            int length = gbinary.Length;
+            for (int i = length - 1; i >= 0; i--)
+            {
+                if (sbinary[i] != gbinary[i])
+                    steps++;
+            }
+            return steps;
+        }
     }
 }
