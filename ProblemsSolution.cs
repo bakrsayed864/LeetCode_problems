@@ -824,6 +824,7 @@ namespace LeetCode
 
         public int CountConsistentStrings(string allowed, string[] words)
         {
+            var allowedChars = new HashSet<char>(allowed);
             int result = 0;
             bool check;
             for (int i = 0; i < words.Length; i++)
@@ -831,7 +832,7 @@ namespace LeetCode
                 check = false;
                 for (int j = 0; j < words[i].Length; j++)
                 {
-                    if (!allowed.Contains(words[i][j]))
+                    if (!allowedChars.Contains(words[i][j]))
                     {
                         check = true;
                         break;
@@ -841,6 +842,19 @@ namespace LeetCode
                     result++;
             }
             return result;
+        }
+
+        public bool ContainsNearbyDuplicate(int[] nums, int k)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                for (int j = i + 1; (j - i <= k) && j != nums.Length; j++)
+                {
+                    if (nums[i] == nums[j])
+                        return true;
+                }
+            }
+            return false;
         }
     }
 }
