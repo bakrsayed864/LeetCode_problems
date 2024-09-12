@@ -250,5 +250,13 @@
         /// 2220. Minimum Bit Flips to Convert Number
         /// <returns>return the minimum number of bit flips to convert start to goal.</returns>
         public int MinBitFlips(int start, int goal);
+
+        /// <summary>
+        /// You are given a string allowed consisting of distinct characters and an array of strings words. 
+        /// A string is consistent if all characters in the string appear in the string allowed.
+        /// </summary>
+        /// 1684. Count the Number of Consistent Strings.
+        /// <returns>Return the number of consistent strings in the array words.</returns>
+        public int CountConsistentStrings(string allowed, string[] words);
     }
 }

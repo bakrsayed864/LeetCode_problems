@@ -821,5 +821,26 @@ namespace LeetCode
             }
             return steps;
         }
+
+        public int CountConsistentStrings(string allowed, string[] words)
+        {
+            int result = 0;
+            bool check;
+            for (int i = 0; i < words.Length; i++)
+            {
+                check = false;
+                for (int j = 0; j < words[i].Length; j++)
+                {
+                    if (!allowed.Contains(words[i][j]))
+                    {
+                        check = true;
+                        break;
+                    }
+                }
+                if (check == false)
+                    result++;
+            }
+            return result;
+        }
     }
 }
