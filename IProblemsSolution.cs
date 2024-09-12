@@ -201,19 +201,19 @@
         /// 525. Contiguous Array
         /// <returns>return the maximum length of a contiguous subarray with an equal number of 0 and 1</returns>
         public int FindMaxLength(int[] nums);
-
+       
         /// <summary>
         /// Given an array of integers nums and an integer k,A subarray is a contiguous non-empty sequence of elements within an array.
         /// </summary>
         /// 525. Contiguous Array
-        /// <returns> return the total number of subarrays whose sum equals to k<return>
+        /// <returns>return the total number of subarrays whose sum equals to k.</returns>
         public int SubarraySum(int[] nums, int k);
-
+   
         /// <summary>
         /// Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
         /// </summary>
         /// 238. Product of Array Except Self
-        /// <returns>return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].<return>
+        /// <returns>return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].</returns>
         public int[] ProductExceptSelf(int[] nums);
 
         /// <summary>
@@ -222,9 +222,9 @@
         /// The parts should be in the order of occurrence in the input list, and parts occurring earlier should always have a size greater than or equal to parts occurring later.
         /// </summary>
         /// 725. Split Linked List in Parts
-        /// <returns>Return an array of the k parts.<return>
+        /// <returns>Return an array of the k parts.</returns>
         public ListNode[] SplitListToParts(ListNode head, int k);
-
+     
         /// <summary>
         /// You are given two integers m and n, which represent the dimensions of a matrix.
         /// You are also given the head of a linked list of integers.
@@ -232,7 +232,7 @@
         /// If there are remaining empty spaces, fill them with -1.
         /// </summary>
         /// 2326. Spiral Matrix IV
-        /// <returns>Return the generated matrix.<return>
+        /// <returns>Return the generated matrix.</returns>
         public int[][] SpiralMatrix(int m, int n, ListNode head);
 
         /// <summary>
@@ -240,7 +240,7 @@
         /// Between every pair of adjacent nodes, insert a new node with a value equal to the greatest common divisor of them.
         /// </summary>
         /// 2807. Insert Greatest Common Divisors in Linked List
-        /// <returns>Return the linked list after insertion.<return>
+        /// <returns>Return the linked list after insertion.</returns>
         public ListNode InsertGreatestCommonDivisors(ListNode head);
 
         /// <summary>
@@ -248,7 +248,7 @@
         /// Given two integers start and goal, return the minimum number of bit flips to convert start to goal.
         /// </summary>
         /// 2220. Minimum Bit Flips to Convert Number
-        /// <returns>return the minimum number of bit flips to convert start to goal.<return>
+        /// <returns>return the minimum number of bit flips to convert start to goal.</returns>
         public int MinBitFlips(int start, int goal);
     }
 }

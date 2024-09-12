@@ -788,7 +788,7 @@ namespace LeetCode
             int smallest = first < second ? first : second;
             for (int i = 1; i <= smallest; i++)
             {
-                if (first.val % i == 0 && second.val % i == 0)
+                if (first % i == 0 && second % i == 0)
                 {
                     GCD = i;
                 }
