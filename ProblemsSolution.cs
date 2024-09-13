@@ -856,5 +856,27 @@ namespace LeetCode
             }
             return false;
         }
+
+        public int FindLHS(int[] nums)
+        {
+            // Sort the array first
+            Array.Sort(nums);
+            int max = 0;
+            int i = 0, j = 1;
+            while (j < nums.Length)
+            {
+                if (nums[j] - nums[i] <= 1)
+                {
+                    if (nums[j] - nums[i] == 1)
+                        max = Math.Max(max, j - i + 1);
+                    j++;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            return max;
+        }
     }
 }
