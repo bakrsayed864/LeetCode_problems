@@ -878,5 +878,27 @@ namespace LeetCode
             }
             return max;
         }
+
+        public int[] XorQueries(int[] arr, int[][] queries)
+        {
+            //translate array to comulative XOR
+            for (int i = 1; i < arr.Length; i++)
+            {
+                arr[i] = arr[i - 1] ^ arr[i];
+            }
+            //claculate result
+            int[] result = new int[queries.Length];
+            for (int i = 0; i < queries.Length; i++)
+            {
+                if (queries[i][0] == 0)
+                {
+                    result[i] = arr[queries[i][1]] ^ 0;
+                }
+
+                else
+                    result[i] = arr[queries[i][1]] ^ arr[queries[i][0] - 1];
+            }
+            return result;
+        }
     }
 }
