@@ -266,5 +266,13 @@
         /// 219. Contains Duplicate II
         /// <returns>return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k</returns>
         public bool ContainsNearbyDuplicate(int[] nums, int k);
+
+        /// <summary>
+        /// We define a harmonious array as an array where the difference between its maximum value and its minimum value is exactly 1.
+        /// Given an integer array nums, return the length of its longest harmonious subsequence among all its possible subsequences.
+        /// </summary>
+        /// 594. Longest Harmonious Subsequence
+        /// <returns>return the length of its longest harmonious subsequence among all its possible subsequences.</returns>
+        public int FindLHS(int[] nums);
     }
 }
