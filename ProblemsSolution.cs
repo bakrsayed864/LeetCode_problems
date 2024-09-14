@@ -900,5 +900,31 @@ namespace LeetCode
             }
             return result;
         }
+
+        public int LongestSubarray(int[] nums)
+        {
+            if (nums.Length == 1)
+                return 1;
+            int maxelement = 1, length = 0, maxLength = 1;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (maxelement < nums[i])
+                {
+                    maxelement = nums[i];
+                    maxLength = 1;
+                    length = 1;
+                }
+                else if (maxelement == nums[i])
+                {
+                    length++;
+                    maxLength = length > maxLength ? length : maxLength;
+                }
+                else if (maxelement != nums[i])
+                {
+                    length = 0;
+                }
+            }
+            return maxLength;
+        }
     }
 }

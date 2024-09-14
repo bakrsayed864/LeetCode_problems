@@ -282,5 +282,13 @@
         /// 1310. XOR Queries of a Subarray.
         /// <returns>Return an array answer where answer[i] is the answer to the ith query.</returns>
         public int[] XorQueries(int[] arr, int[][] queries);
+
+        /// <summary>
+        /// You are given an integer array nums of size n.
+        /// Consider a non-empty subarray from nums that has the maximum possible bitwise AND.
+        /// </summary>
+        /// 2419. Longest Subarray With Maximum Bitwise AND
+        /// <returns>Return the length of the longest such subarray.</returns>
+        public int LongestSubarray(int[] nums);
     }
 }
