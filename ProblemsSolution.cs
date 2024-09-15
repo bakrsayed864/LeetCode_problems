@@ -926,5 +926,35 @@ namespace LeetCode
             }
             return maxLength;
         }
+
+        public int FindTheLongestSubstring(string s)
+        {
+            Dictionary<string, int> keep = new();
+            StringBuilder mask = new("00000");
+            int length = 0;
+            keep[mask.ToString()] = -1;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == 'a')
+                    mask[0] = mask[0] == '0' ? '1' : '0';
+                else if (s[i] == 'o')
+                    mask[1] = mask[1] == '0' ? '1' : '0';
+                else if (s[i] == 'u')
+                    mask[2] = mask[2] == '0' ? '1' : '0';
+                else if (s[i] == 'e')
+                    mask[3] = mask[3] == '0' ? '1' : '0';
+                else if (s[i] == 'i')
+                    mask[4] = mask[4] == '0' ? '1' : '0';
+                if (keep.ContainsKey(mask.ToString()))
+                {
+                    length = Math.Max(length, i - keep[mask.ToString()]);
+                }
+                else
+                {
+                    keep[mask.ToString()] = i;
+                }
+            }
+            return length;
+        }
     }
 }
