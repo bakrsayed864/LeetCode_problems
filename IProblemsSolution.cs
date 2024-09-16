@@ -1,4 +1,6 @@
-﻿namespace LeetCode
+﻿using System.Collections.Generic;
+
+namespace LeetCode
 {
     public interface IProblemsSolution
     {
@@ -298,5 +300,12 @@
         /// 1371. Find the Longest Substring Containing Vowels in Even Counts
         /// <returns>return the size of the longest substring containing each vowel an even number of times.</returns>
         public int FindTheLongestSubstring(string s);
+
+        /// <summary>
+        /// Given a list of 24-hour clock time points in "HH:MM" format, return the minimum minutes difference between any two time-points in the list.
+        /// </summary>
+        /// 539. Minimum Time Difference
+        /// <returns>return the minimum minutes difference between any two time-points in the list.</returns>
+        public int FindMinDifference(IList<string> timePoints);
     }
 }

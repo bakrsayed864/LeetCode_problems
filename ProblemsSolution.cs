@@ -956,5 +956,30 @@ namespace LeetCode
             }
             return length;
         }
+
+        public int FindMinDifference(IList<string> timePoints)
+        {
+            int[] minutes = new int[timePoints.Count()];
+            string hours, min;
+            int eqMinutes;
+            for (int i = 0; i < timePoints.Count(); i++)
+            {
+                hours = timePoints[i][0].ToString() + timePoints[i][1].ToString();
+                min = timePoints[i][3].ToString() + timePoints[i][4].ToString();
+                eqMinutes = int.Parse(hours) * 60 + int.Parse(min);
+                minutes[i] = eqMinutes;
+            }
+            Array.Sort(minutes);
+            int eqMinutes1 = 0;
+            int eqHours1 = 0, eqHours2 = 0, eqMinutes2 = 0;
+            int res = int.MaxValue;
+            for (int i = 1; i < minutes.Length; i++)
+            {
+                res = Math.Min(res, minutes[i] - minutes[i - 1]);
+            }
+            int minspcase = (1440 - minutes[minutes.Length - 1]) + minutes[0];
+            res = Math.Min(res, minspcase);
+            return res;
+        }
     }
 }
