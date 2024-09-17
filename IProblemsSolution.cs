@@ -316,5 +316,12 @@ namespace LeetCode
         /// 884. Uncommon Words from Two Sentences
         /// <returns>return a list of all the uncommon words. You may return the answer in any order.</returns>
         public string[] UncommonFromSentences(string s1, string s2);
+
+        /// <summary>
+        /// Given a string s, return the longest palindromic substring in s.
+        /// </summary>
+        /// 5. Longest Palindromic Substring
+        /// <returns>return the longest palindromic substring in s.</returns>
+        public string LongestPalindrome(string s);
     }
 }

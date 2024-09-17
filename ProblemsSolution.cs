@@ -174,7 +174,7 @@ namespace LeetCode
 
             return collisions;
         }
-    
+        
         public int[] TwoSum(int[] nums, int target)
         {
             int[] outt = new int[2];
@@ -1007,6 +1007,45 @@ namespace LeetCode
                 }
             }
             return result.ToArray();
+        }
+
+        public string LongestPalindrome(string s)
+        {
+            if (s == null || s.Length <= 1) return s;
+
+            int start = 0, end = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                // Check for odd-length palindrome
+                int len1 = ExpandAroundCenter(s, i, i);
+                // Check for even-length palindrome
+                int len2 = ExpandAroundCenter(s, i, i + 1);
+
+                // Get the maximum length between odd and even palindromes
+                int len = Math.Max(len1, len2);
+
+                // Update the start and end pointers if we found a longer palindrome
+                if (len > end - start)
+                {
+                    start = i - (len - 1) / 2;
+                    end = i + len / 2;
+                }
+            }
+
+            // Return the longest palindromic substring
+            return s.Substring(start, end - start + 1);
+        }
+        private static int ExpandAroundCenter(string s, int left, int right)
+        {
+            while (left >= 0 && right < s.Length && s[left] == s[right])
+            {
+                left--;
+                right++;
+            }
+
+            // Return the length of the palindrome
+            return right - left - 1;
         }
     }
 }
