@@ -981,5 +981,32 @@ namespace LeetCode
             res = Math.Min(res, minspcase);
             return res;
         }
+
+        public string[] UncommonFromSentences(string s1, string s2)
+        {
+            string[] s = (s1 + " " + s2).Split(" ");
+            List<string> result = new();
+            Dictionary<string, int> keep = new();
+            for (int j = 0; j < s.Length; j++)
+            {
+                if (keep.ContainsKey(s[j]))
+                {
+                    keep[s[j]] = keep[s[j]] + 1;
+                }
+                else
+                {
+                    keep[s[j]] = 1;
+                }
+            }
+            //to get uncommon words
+            foreach (var item in keep.Keys)
+            {
+                if (keep[item] == 1)
+                {
+                    result.Add(item);
+                }
+            }
+            return result.ToArray();
+        }
     }
 }
