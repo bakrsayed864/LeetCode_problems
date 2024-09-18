@@ -1036,7 +1036,7 @@ namespace LeetCode
             // Return the longest palindromic substring
             return s.Substring(start, end - start + 1);
         }
-        private static int ExpandAroundCenter(string s, int left, int right)
+        private int ExpandAroundCenter(string s, int left, int right)
         {
             while (left >= 0 && right < s.Length && s[left] == s[right])
             {
@@ -1046,6 +1046,43 @@ namespace LeetCode
 
             // Return the length of the palindrome
             return right - left - 1;
+        }
+
+        public string LargestNumber(int[] nums)
+        {
+            List<string> strNums = new List<string>();
+            foreach (var num in nums)
+            {
+                strNums.Add(num.ToString());
+            }
+
+            // Sort the numbers using a custom comparator
+            int changed = 1;
+            ulong num1, num2;
+            string keep = "";
+            while (changed != 0)
+            {
+                changed = 0;
+                for (int i = 0; i < strNums.Count - 1; i++)
+                {
+                    num1 = ulong.Parse(strNums[i] + strNums[i + 1]);
+                    num2 = ulong.Parse(strNums[i + 1] + strNums[i]);
+                    if (num2 > num1)
+                    {
+                        keep = strNums[i];
+                        strNums[i] = strNums[i + 1];
+                        strNums[i + 1] = keep;
+                        changed = 1;
+                    }
+                }
+            }
+            // If the largest number is '0', return "0"
+            if (strNums[0] == "0")
+            {
+                return "0";
+            }
+            // Join the sorted strings to form the largest number
+            return string.Join("", strNums);
         }
     }
 }

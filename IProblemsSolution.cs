@@ -323,5 +323,12 @@ namespace LeetCode
         /// 5. Longest Palindromic Substring
         /// <returns>return the longest palindromic substring in s.</returns>
         public string LongestPalindrome(string s);
+
+        /// <summary>
+        /// Given a list of non-negative integers nums, arrange them such that they form the largest number and return it.
+        /// </summary>
+        /// 179. Largest Number
+        /// <returns>return the larges poosible number as a string.</returns>
+        public string LargestNumber(int[] nums);
     }
 }
