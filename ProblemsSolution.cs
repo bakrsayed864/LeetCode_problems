@@ -1084,5 +1084,82 @@ namespace LeetCode
             // Join the sorted strings to form the largest number
             return string.Join("", strNums);
         }
+
+        public IList<int> LexicalOrder(int n)
+        {
+            List<string> result = new List<string>();
+            for (int i = 1; i <= n; i++)
+            {
+                result.Add(i.ToString());
+            }
+            mergeSort(result);
+            var finalresult = result
+                .Select(n => int.Parse(n))  // Step 1: Convert to strings
+                .ToList();
+            return finalresult;
+        }
+        private void mergeSort(List<string> list)
+        {
+            if (list == null || list.Count <= 1)
+            {
+                return;
+            }
+            mergeSort(list, 0, list.Count - 1);
+        }
+        private void mergeSort(List<string> list, int l, int r)
+        {
+            if (l < r)
+            {
+                int m = l + (r - l) / 2;
+
+                mergeSort(list, l, m);
+                mergeSort(list, m + 1, r);
+
+                merge(list, l, m, r);
+            }
+        }
+        private void merge(List<string> list, int l, int m, int r)
+        {
+            // Create the left and right sublists
+            List<string> left = list.GetRange(l, m - l + 1);
+            List<string> right = list.GetRange(m + 1, r - m);
+
+            // Now left and right contain the respective parts of the original list
+            // You can proceed with your merge logic here
+
+            int i = 0, j = 0, k = l;
+
+            // Merge the left and right lists back into the original list
+            while (i < left.Count && j < right.Count)
+            {
+                if (left[i].CompareTo(right[j]) <= 0)
+                {
+                    list[k] = left[i];
+                    i++;
+                }
+                else
+                {
+                    list[k] = right[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // Copy any remaining elements from left
+            while (i < left.Count)
+            {
+                list[k] = left[i];
+                i++;
+                k++;
+            }
+
+            // Copy any remaining elements from right
+            while (j < right.Count)
+            {
+                list[k] = right[j];
+                j++;
+                k++;
+            }
+        }
     }
 }

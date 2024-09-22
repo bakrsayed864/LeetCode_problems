@@ -330,5 +330,12 @@ namespace LeetCode
         /// 179. Largest Number
         /// <returns>return the larges poosible number as a string.</returns>
         public string LargestNumber(int[] nums);
+
+        /// <summary>
+        /// Given an integer n, return all the numbers in the range [1, n] sorted in lexicographical order.
+        /// </summary>
+        /// 386. Lexicographical Numbers
+        /// <returns>return all the numbers in the range [1, n] sorted in lexicographical order.</returns>
+        public IList<int> LexicalOrder(int n);
     }
 }
